@@ -1,0 +1,110 @@
+<!-- Toolbar -->
+<div class="container">
+  <div class="toolbar px-4" role="banner">
+    <div class="container-fluid">
+      <div class="row mt-3">
+        <div class="col-md-1"></div>
+        <div class="col-md-9 px-4">
+          <input type="text" class="form-control mx-2" style="background-color: #f8f9fa;" [(ngModel)]="searchTerm" placeholder="Search..." />
+        </div>
+        <div class="col-md-2 px-4">
+          <button class="btn btn-submit d-flex mx-1"><mat-icon>library_books</mat-icon></button>&nbsp;
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="outer">
+  <div class="container-fluid mt-5">
+    <div class="row mt-5 pt-5">
+      <div class="content">
+        <h1 class="header">Your Notes</h1>
+        <div>
+          <div class="row">
+            <div class="col-sm-9">
+              <div class="button-group">
+                <button mat-button>All</button>
+                <button mat-button (click)="homedir()">Home</button>
+              </div>
+            </div>
+            <div class="col-sm-3 text-right">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                  Show only Completed Notes
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="categories mt-3">
+          <div class="row">
+            <div class="col-md-4 mb-3" *ngFor="let data of filteredNotes; index as i">
+              <div class="products">
+                <div class="product shadow-lg p-3">
+                  <div class="row">
+                    <div class="col-sm-3 pt-1">
+                      <span class="span">{{ data.category }}</span>
+                    </div>
+                    <div class="col-sm-9 text-right">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">&nbsp;
+                      <mat-icon style="color: #6e6e6e; cursor: pointer;" matTooltip="Edit" (click)="editnotes(data)">create</mat-icon>&nbsp;
+                      <mat-icon style="color: #6e6e6e; cursor: pointer;" matTooltip="Delete" (click)="confirmDelete(data._id)">delete_outline</mat-icon>
+                    </div>
+                  </div>
+                  <div class="para">
+                    <h1 class="header">{{ data.title }}</h1>
+                    <p>{{ data.content }}</p>
+                  </div>
+                  <p class="date">{{ formatDate(data.date) }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p>&copy; 2024 Dhanraj Design. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-right">
+        <div class="siteFooter__secondary__col siteFooter__secondary__col--social d-flex">
+          <div aria-describedby="https://twitter.com/intent/follow?screen_name=asana" class="css-yuiwnc e1huxitw0">
+            <a href="https://twitter.com/intent/follow?screen_name=asana" target="_blank" rel="noopener noreferrer" class="css-lfrbhm e1dfgc0i0">
+              <svg width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" role="graphics-symbol" aria-labelledby="twitter-title-id" aria-hidden="false">
+                <title id="twitter-title-id">Twitter</title>
+                <path d="m9.51904,7.34694l5.24621,-5.97185l-1.24275,0l-4.5572,5.18421l-3.63712,-5.18421l-4.19603,0l5.50124,7.84019l-5.50124,6.26163l1.24275,0l4.80942,-5.47588l3.8419,5.47588l4.19603,0m-12.39881,-13.18409l1.90921,0l8.78893,12.31145l-1.90968,0">
+                </path>
+              </svg>
+            </a>
+          </div>&nbsp; &nbsp;
+          <div aria-describedby="https://www.linkedin.com/company/asana" class="css-yuiwnc e1huxitw0">
+            <a href="https://www.linkedin.com/company/asana" target="_blank" rel="noopener noreferrer" class="css-lfrbhm e1dfgc0i0">
+              <svg width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" role="graphics-symbol" aria-labelledby="linkedin-title-id" aria-hidden="false">
+                <title id="linkedin-title-id">Linkedin</title>
+                <path d="M4.63 14.784H1.858V5.913H4.63v8.871Zm-1.456-9.98h-.02c-1.003 0-1.654-.68-1.654-1.538 0-.876.67-1.54 1.694-1.54 1.022 0 1.651.662 1.671 1.537 0 .86-.65 1.54-1.691 1.54Zm12.548 9.98H12.58v-4.59c0-1.202-.49-2.021-1.573-2.021-.828 0-1.287.553-1.5 1.086-.08.19-.069.458-.069.725v4.8H6.323s.04-8.132 0-8.871h3.114v1.392c.184-.609 1.18-1.478 2.768-1.478 1.97 0 3.517 1.276 3.517 4.024v4.933Z">
+                </path>
+              </svg>
+            </a>
+          </div>&nbsp; &nbsp;
+          <div aria-describedby="https://www.instagram.com/asana/" class="css-yuiwnc e1huxitw0">
+            <a href="https://www.instagram.com/asana/" target="_blank" rel="noopener noreferrer" class="css-lfrbhm e1dfgc0i0">
+              <svg width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" role="graphics-symbol" aria-labelledby="instagram-title-id" aria-hidden="false">
+                <title id="instagram-title-id">Instagram</title>
+                <path d="M15.334 4.84c-.048-.986-.213-1.66-.452-2.253-.248-.613-.58-1.134-1.123-1.678-.544-.544-1.065-.876-1.678-1.124-.593-.238-1.267-.404-2.253-.452C8.948-.009 8.61 0 8 0s-.948-.009-1.828.034c-.986.048-1.66.213-2.253.452-.613.248-1.134.58-1.678 1.123-.544.544-.876 1.065-1.124 1.678-.238.593-.404 1.267-.452 2.253C.009 5.052 0 5.39 0 6s-.009.948.034 1.828c.048.986.213 1.66.452 2.253.248.613.58 1.134 1.123 1.678.544.544 1.065.876 1.678 1.124.593.238 1.267.404 2.253.452C5.052 15.991 5.39 16 6 16s.948.009 1.828-.034c.986-.048 1.66-.213 2.253-.452.613-.248 1.134-.58 1.678-1.123.544-.544.876-1.065 1.124-1.678.238-.593.404-1.267.452-2.253.043-.88.034-1.218.034-1.828s.009-.948-.034-1.828zM14.391 8c0 .946-.009 1.26-.031 1.74-.044.86-.198 1.33-.328 1.64-.208.538-.456.923-.832 1.298-.375.375-.76.623-1.298.832-.31.13-.78.284-1.64.328-.48.022-.794.031-1.74.031-.946 0-1.26-.009-1.74-.031-.86-.044-1.33-.198-1.64-.328-.538-.208-.923-.456-1.298-.832-.375-.375-.623-.76-.832-1.298-.13-.31-.284-.78-.328-1.64C2.618 9.26 2.609 8.946 2.609 8s.009-1.26.031-1.74c.044-.86.198-1.33.328-1.64.208-.538.456-.923.832-1.298.375-.375.76-.623 1.298-.832.31-.13.78-.284 1.64-.328.48-.022.794-.031 1.74-.031.946 0 1.26.009 1.74.031.86.044 1.33.198 1.64.328.538.208.923.456 1.298.832.375.375.623.76.832 1.298.13.31.284.78.328 1.64.022.48.031.794.031 1.74zM8 4.281A3.723 3.723 0 004.281 8 3.723 3.723 0 008 11.719 3.723 3.723 0 0011.719 8 3.723 3.723 0 008 4.281zm0 6.112A2.395 2.395 0 015.607 8 2.395 2.395 0 018 5.607 2.395 2.395 0 0110.393 8 2.395 2.395 0 018 10.393zM12.552 4.015a.868.868 0 00-.612.256.868.868 0 00-.256.612c0 .231.095.451.256.612a.868.868 0 00.612.256.868.868 0 00.612-.256.868.868 0 00.256-.612c0-.231-.095-.451-.256-.612a.868.868 0 00-.612-.256z">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
