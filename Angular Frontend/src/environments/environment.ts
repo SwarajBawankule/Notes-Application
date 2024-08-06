@@ -5,7 +5,7 @@
 export const environment = {
   production: true,
   ///// Development Url //////
-  _api:'https://notes-application-gamma.vercel.app/'
+  _api:'https://notes-repo-two.vercel.app'
 };
 
 /*
