@@ -1,122 +1,81 @@
+/* Ensure the body and html take up the full height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
 
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  height: 100vh; /* Full viewport height */
+}
 
-   .iconify{
-            padding:2px;
-            background-color:#deebfd;
-   }
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
 
+.hero-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container */
+  z-index: 1; /* Place the image behind the text */
+}
 
-   .carousel-inner{
-                   background-image: url("../../assets/hero-bg.jpg");
-                   height:100%;
-                   width:100%;
-   }
-   .d-block{
-             width:10%;
-            margin-left:45%;
-            margin-bottom:15%;
-            margin-top:10%;
-       
-   }
-   /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-    .card-container > *:not(.circle-link) ,
-    .terminal {
-      width: 100%;
-    }
+.hero-text {
+  position: relative;
+  color: white;
+  text-align: center;
+  z-index: 2; /* Ensure text is above the image */
+}
 
-    .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
-    }
+.hero-text h1 {
+  font-size: 3rem; /* Adjust the font size as needed */
+  margin: 0;
+}
 
-    .card.highlight-card span {
-      margin-left: 72px;
-    }
+.highlight-text {
+  color: #ff5733; /* Change this color to suit your design */
+}
 
-    svg#rocket-smoke {
-      right: 120px;
-      transform: rotate(-5deg);
-    }
+.button-container {
+  margin-top: 20px; /* Adjust spacing between text and buttons */
+}
+
+.btn-submit {
+  background-color: #131416;
+  border-color: #111317;
+  color: #ffffff;
+  padding: 6px 12px !important;
+  background-image: none;
+  border-radius: 5px;
+  margin: 5px;
+  text-align: center;
+  justify-content: center;
+}
+
+.btn-submit:hover {
+  background-color: #ff5263;
+  border-color: #ed4758;
+}
+
+/* Optional: Add responsive styles */
+@media screen and (max-width: 767px) {
+  .hero-text h1 {
+    font-size: 2rem; /* Adjust font size for smaller screens */
   }
 
-  @media screen and (max-width: 575px) {
-    svg#rocket-smoke {
-      display: none;
-      visibility: hidden;
-    }
-  }
   .btn-submit {
-    background-color:#131416;;
-    border-color:#111317;
-    color: #ffffff;
-    padding: 6px 12px !important;
-    background-image: none;
-    border-radius: 5px;
-    float: right;
-    text-align: right;
-    justify-content: right;
+    padding: 4px 8px !important;
+    font-size: 0.875rem; /* Adjust font size for smaller screens */
   }
-  
-  .btn-submit:hover {
-    background-color: #ff5263;
-    border-color: #ed4758;
-  }
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #0d6efd;;
-    color: black;
-    font-weight: 600;
-    box-shadow: 0 1rem 1rem rgba(198, 193, 193, 0.18) !important;
-  }
+}
 
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 8px;
-  }
-
-  .toolbar #youtube-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo:hover,
-  .toolbar #youtube-logo:hover {
-    opacity: 0.8;
-  }
-
-  .footer {
-    background-color: #710c3a;
-    color: #ffffff;
-    padding: 30px 0;
-    margin-top: 10px;
-  }
-  .footer a {
-    color: #ffffff;
-    text-decoration: none;
-  }
-  .footer a:hover {
-    text-decoration: underline;
-  }
-  .footer .social-icons a {
-    margin: 0 15px;
-  }
-  .siteFooter__secondary__col {
-    color: white;
-  }
-  body{
-    background-color: gray;
-  }
-  .example-spacer {
-    flex: 1 1 auto;
-  }
+.custom-toolbar{
+  background-color: rgb(48, 134, 93);
+}
